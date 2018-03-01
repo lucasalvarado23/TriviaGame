@@ -83,7 +83,6 @@ function showScores() {
     element.innerHTML = gameOverHtml;
     //start again botton//
     var button = document.createElement("btn")
-    button.setAttribute("id", "restart");
     button.innerHTML = "New Game"
     element.appendChild(button);
     clearInterval(interval)
