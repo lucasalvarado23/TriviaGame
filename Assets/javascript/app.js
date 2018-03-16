@@ -1,10 +1,10 @@
 var outOfTime = "false";
 
-var init 
+var init
 
-window.onload = function(){
-init = document.getElementById(quiz)
-console.log(init)
+window.onload = function() {
+    init = document.getElementById(quiz)
+    console.log(init)
 }
 
 function populate() {
@@ -77,17 +77,21 @@ function showProgress() {
 }
 
 function showScores() {
-    var gameOverHtml = "<h1>Result</h1>";
+    var gameOverHtml = "<h1>right answers</h1>";
+    var gameOverWrongHtml = "<h1>Wrong Answers</h1>";
     gameOverHtml += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+    gameOverWrongHtml += "<h2 id='score'> Your scores: " + (10 - quiz.score) +"</h2>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHtml;
+    var element2 = document.getElementById("wrong");
+    element2.innerHTML = gameOverWrongHtml;
     //start again botton//
     var button = document.createElement("btn")
     button.innerHTML = "New Game"
     element.appendChild(button);
     clearInterval(interval)
     document.getElementById("restart").onclick = function() {
-    	element.innerHTML = init
+        element.innerHTML = init
         populate()
         c = 12
         interval = setInterval(count, 1000);

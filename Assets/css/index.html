@@ -4,58 +4,71 @@
 <head>
   <meta charset="utf-8">
   <title>Favorite Movies</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
 </head>
 
 <body>
+
   <div class="container">
-    <h2>Basic Table</h2>
-    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Movie Name</th>
-          <th>Year</th>
-          <th>Actors</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Insert movie rows here -->
-      </tbody>
-    </table>
+    <h1>Movie Search</h1>
+
+    <!-- Movies will get dumped here -->
+    <div id="movies-view"></div>
+
+    <form id="movie-form">
+      <label for="movie-input">Add a Movie Bro</label>
+      <input type="text" id="movie-input">
+      <br>
+
+      <!-- Button triggers new movie to be added -->
+      <input id="add-movie" type="submit" value="Add a Movie Bro">
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      // Initial array of movies
+      var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+
+      // Function for displaying movie data
+      function renderButtons() {
+
+        // Delete the content inside the movies-view div prior to adding new movies
+        // (this is necessary otherwise you will have repeat buttons)
+        $(#movies-view).remove();
+
+        // Loop through the array of movies, then generate buttons for each movie in the array
+
+      }
+
+      // This function handles events where the add movie button is clicked
+      $("#add-movie").on("click", function(event) {
+        // event.preventDefault() prevents submit button from trying to send a form.
+        // Using a submit button instead of a regular button allows the user to hit
+        // "Enter" instead of clicking the button if desired
+        event.preventDefault();
+
+        // Write code to grab the text the user types into the input field
+        $("#add-movie").keypress(function() {
+  console.log("Handler for .keypress()called");
+});
+        // Write code to add the new movie into the movies array
+        movies.(push)        }
+
+        // The renderButtons function is called, rendering the list of movie buttons
+        renderButtons();
+      });
+
+      // Calling the renderButtons function to display the initial list of movies
+      renderButtons();
+    </script>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // The below code fills in the first row of the table
-    var movie = "Mr. Nobody";
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response)
-
-      // Obtain a reference to the tbody element in the DOM
-      var tbody = $("tbody")
-
-
-      // Create and save a reference to new empty table row
-      var tr = $("<tr> </tr>")
-      // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
-      var td1 = $("<td>").text(response.Title)
-      var td2 = $("<td>").text(response.Year)
-      var td3 = $("<td>").text(response.Actors)
-      // Append the td elements to the new table row
-      tr.append(td1,td2,td3)
-      // Append the table row to the tbody element
-      tbody.append(tr)
-    });
-
-    // Repeat the above logic to add rows for two more movies of your choice
-
-    // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
-  </script>
 </body>
 
 </html>
